@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finance Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    #startup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #141e30, #243b55);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeOut 2s ease forwards;
+      animation-delay: 2s;
+    }
+
+    .startup-text {
+      font-size: 2.5rem;
+      color: rgb(80, 104, 159);
+      animation: fadeSlide 1.5s ease-out;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    @keyframes fadeSlide {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #333f8b;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: white;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero, .content {
+      padding: 100px 20px;
+      text-align: center;
+      animation: fadeSlide 1s ease-out forwards;
+    }
+
+    .hero h2, .content h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p, .content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .cta-btn {
+      padding: 15px 30px;
+      background: linear-gradient(to right, #707c92, #6a11cb);
+      border: none;
+      color: white;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(106, 17, 203, 0.4);
+    }
+
+    .description {
+      background: rgba(255, 255, 255, 0.1);
+      margin-top: 60px;
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .motto {
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 40px;
+      color: #38f9d7;
+    }
+
+    .how-it-works {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 80px;
+      flex-wrap: wrap;
+    }
+
+    .how-it-works .step {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 15px;
+      max-width: 300px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .how-it-works img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      margin-top: 60px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div id="startup-overlay">
+    <h1 class="startup-text">Welcome to MStart</h1>
+  </div>
+
+  <header>
+    <div class="logo">MStart</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="privacy.html">Privacy & Security</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="content">
+    <h2>Welcome to MStart!</h2>
+    <p>Manage your finances with ease. Track your spending, set budgets, and get insights into your financial habits. We make it simple to stay on top of your expenses.</p>
+  </section>
+
+  <section class="description">
+    <h3>How the App Works</h3>
+    <p>Our app helps you manage your money by allowing you to track all your expenses in one place. You can set budgets, categorize expenses, and even track your progress over time.</p>
+  </section>
+
+  <section class="motto">
+    <p>"Empowering you to take control of your finances and live stress-free!"</p>
+  </section>
+
+  <section class="how-it-works">
+    <div class="step">
+      <img src="Screenshot 2024-11-26 081127.png" alt="Screenshot showing expense tracking screen" />
+      <h4>Track Your Expenses</h4>
+      <p>Record every expense and categorize them for easy tracking.</p>
+    </div>
+    <div class="step">
+      <img src="Screenshot 2024-11-26 081127.png" alt="Budget setup interface screenshot" />
+      <h4>Set Your Budget</h4>
+      <p>Establish budgets for different categories and stay within your limits.</p>
+    </div>
+    <div class="step">
+      <img src="Screenshot 2024-11-26 081127.png" alt="Progress overview and analytics chart" />
+      <h4>Monitor Your Progress</h4>
+      <p>Review your spending patterns and make adjustments to your budget as needed.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 MStart. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('startup-overlay').style.display = 'none';
+      }, 2000);
+    });
+  </script>
+</body>
+</html>

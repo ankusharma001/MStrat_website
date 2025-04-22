@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support - Finance Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #1f4037, #99f2c8);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    #startup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #0f2027, #203a43);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeOut 2s ease forwards;
+      animation-delay: 2s;
+    }
+
+    .startup-text {
+      font-size: 2.5rem;
+      color: white;
+      animation: fadeSlide 1.5s ease-out;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    header nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: white;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .content {
+      padding: 100px 20px 40px;
+      text-align: center;
+      animation: fadeSlide 1s ease-out forwards;
+    }
+
+    .content h2 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeSlide {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-section {
+      margin-top: 50px;
+      padding: 40px 20px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      backdrop-filter: blur(8px);
+      animation: fadeSlide 1.5s ease-in-out;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-section h2 {
+      font-size: 2.4rem;
+      margin-bottom: 30px;
+    }
+
+    .support-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .support-form input,
+    .support-form textarea {
+      padding: 15px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      color: #333;
+      background: linear-gradient(145deg, #ffffff, #d4f3ea);
+      transition: all 0.3s ease;
+    }
+
+    .support-form input:focus,
+    .support-form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 10px #33d9b2;
+      transform: scale(1.02);
+    }
+
+    .support-form button {
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .support-form button:hover {
+      background: linear-gradient(to right, #43e97b, #38f9d7);
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+  <div id="startup-overlay">
+    <h1 class="startup-text">Need Help? We Got You.</h1>
+  </div>
+
+  <header>
+    <nav>
+      <h1>FinanceTracker</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="privacy.html">Privacy & Security</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="content">
+    <h2>Support</h2>
+    <p>
+      We’re here for you 24/7. Whether you have questions about features, need troubleshooting help, or want to give feedback, our team is just a message away. Contact us via support@financetracker.com or reach out through our app chat support.
+    </p>
+  </section>
+
+  <section class="form-section">
+    <h2>Send Us a Query</h2>
+    <form action="https://formsubmit.co/sharmankush004a@gmail.com" method="POST" class="support-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message..." rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+      <input type="hidden" name="_subject" value="Support Query from Finance Tracker" />
+      <input type="hidden" name="_next" value="http://127.0.0.1:5500/support.html" />
+      <input type="hidden" name="_captcha" value="false" />
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 FinanceTracker</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('startup-overlay').style.display = 'none';
+      }, 500);
+    });
+  </script>
+</body>
+</html>
