@@ -6,6 +6,7 @@
   <title>Support - Mstrat</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* Existing styles remain unchanged */
     * {
       margin: 0;
       padding: 0;
@@ -21,6 +22,56 @@
       position: relative;
     }
 
+    /* Add styles for the popup */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      display: none;
+      text-align: center;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .popup.show {
+      display: block;
+    }
+
+    .popup.success {
+      background: linear-gradient(to right, #43e97b, #38f9d7);
+    }
+
+    .popup.error {
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+    }
+
+    .popup button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #0072ff;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .popup button:hover {
+      background: #00c6ff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -60%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    /* Rest of your existing styles */
     #startup-overlay {
       position: fixed;
       top: 0;
@@ -210,26 +261,80 @@
 
   <section class="form-section">
     <h2>Send Us a Query</h2>
-    <form action="https://formsubmit.co/sharmankush004a@gmail.com" method="POST" class="support-form">
+    <form id="support-form" class="support-form">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
       <textarea name="message" placeholder="Your Message..." rows="5" required></textarea>
       <button type="submit">Send Message</button>
       <input type="hidden" name="_subject" value="Support Query from Finance Tracker" />
-      <input type="hidden" name="_next" value="http://127.0.0.1:5500/support.html" />
       <input type="hidden" name="_captcha" value="false" />
     </form>
   </section>
 
+  <!-- Popup for success/error messages -->
+  <div id="popup" class="popup">
+    <p id="popup-message"></p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+
   <footer>
-    <p>&copy; 2025 FinanceTracker</p>
+    <p>© 2025 FinanceTracker</p>
   </footer>
 
   <script>
+    // Handle form submission
+    document.getElementById('support-form').addEventListener('submit', async (e) => {
+      e.preventDefault(); // Prevent default form submission
+
+      const form = e.target;
+      const formData = new FormData(form);
+      const popup = document.getElementById('popup');
+      const popupMessage = document.getElementById('popup-message');
+
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/sharmankush004a@gmail.com', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        const result = await response.json();
+
+        if (result.success === 'true') {
+          // Show success popup
+          popupMessage.textContent = 'Message sent successfully!';
+          popup.classList.remove('error');
+          popup.classList.add('success', 'show');
+          form.reset(); // Clear the form
+        } else {
+          // Show error popup
+          popupMessage.textContent = 'Failed to send message. Please try again.';
+          popup.classList.remove('success');
+          popup.classList.add('error', 'show');
+        }
+      } catch (error) {
+        // Handle network or other errors
+        popupMessage.textContent = 'An error occurred. Please try again later.';
+        popup.classList.remove('success');
+        popup.classList.add('error', 'show');
+      }
+    });
+
+    // Function to close the popup
+    function closePopup() {
+      document.getElementById('popup').classList.remove('show');
+    }
+
+    // Hide startup overlay (if uncommented)
     document.addEventListener('DOMContentLoaded', () => {
-      setTimeout(() => {
-        document.getElementById('startup-overlay').style.display = 'none';
-      }, 500);
+      const overlay = document.getElementById('startup-overlay');
+      if (overlay) {
+        setTimeout(() => {
+          overlay.style.display = 'none';
+        }, 500);
+      }
     });
   </script>
 </body>
